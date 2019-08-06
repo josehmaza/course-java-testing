@@ -24,4 +24,38 @@ public class StringUtilTest {
          StringUtil.repeat("hola", -2);
     }
 
+    @Test
+    public void str_not_empty(){
+        String str = "anything";
+
+        boolean resultado = StringUtil.isEmpty(str);
+
+        Assert.assertFalse(resultado);
+    }
+    @Test
+    public void str_empty(){
+        String str = "";
+
+        boolean resultado =  StringUtil.isEmpty(str);
+
+        Assert.assertTrue(resultado);
+    }
+
+    @Test
+    public void str_is_null(){
+        String str = null;
+
+        boolean resultado = StringUtil.isEmpty(str);
+
+        Assert.assertTrue(resultado);
+    }
+    @Test
+    public void str_with_only_spaces(){
+        String str = "      ";
+
+        boolean resultado = StringUtil.isEmpty(str);
+
+        System.out.println("   ".trim().length());
+        Assert.assertTrue(resultado);
+    }
 }
