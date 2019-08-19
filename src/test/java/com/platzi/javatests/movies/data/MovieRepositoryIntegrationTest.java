@@ -63,6 +63,16 @@ public class MovieRepositoryIntegrationTest {
         ));
     }
 
+    @Test
+    public void load_movies_by_name() {
+        Collection<Movie> searchedMovies = movieRepositoryJdbc.findByName("super");
+        assertThat(searchedMovies, CoreMatchers.is(Arrays.asList(
+            new Movie (4, "Superman", 111, Genre.ACTION),
+            new Movie (5, "Super 8", 110, Genre.DRAMA),
+            new Movie (6, "Super PAPA", 123, Genre.COMEDY)
+        )));
+    }
+
     @After
     public void tearDown() throws Exception {
         final Statement s = dataSource.getConnection().createStatement();
